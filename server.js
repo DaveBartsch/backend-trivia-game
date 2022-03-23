@@ -41,10 +41,12 @@ app.get("/trivia", (req, res) => {
   let grade = gradeAnswer(qArray[gameState.questionNum], answer);
 
   if (answer === qArray[19].correct) {
-    res.send(youAreRight + "You are done the quiz! To see your score go to <br> http://localhost:3000/score")
+    console.log("Last question recieved! Directing user to score page.")
+    res.send(youAreRight + "You are done the quiz! To see your score go to <br> <a href ='http://localhost:3000/score'>Score Page</a>")
   } else if (answer === qArray[19].wrong1 || answer === qArray[19].wrong2 || answer === qArray[19].wrong
-  ){
-    res.send(youAreWrong + "You are done the quiz! To see your score go to <br> http://localhost:3000/score")
+    ){
+    console.log("Last question recieved! Directing user to score page.")
+    res.send(youAreWrong + "You are done the quiz! To see your score go to <br> <a href ='http://localhost:3000/score'>Score Page</a>")
   } 
   
   else {
@@ -56,7 +58,7 @@ app.get("/trivia", (req, res) => {
 app.get("/score", (req, res) => {
   console.log(`The score is (${gameState.score}) out of 12`);
   res.send(
-    `Your score is: (${gameState.score}) out of 20! To play again edit the URL to: <br> http://localhost:3000/start`
+    `Your score is: (${gameState.score}) out of 20! Play again by clicking on the link! <br> <a href ="http://localhost:3000/start">Start Game</a>`
   );
 });
 

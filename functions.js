@@ -12,7 +12,7 @@ const youAreWrong = "Wrong answer! <br>";
 const youAreRight = "Correct answer! <br>";
 
 // shuffles an array
-function shuffle(array) {
+let shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -37,17 +37,17 @@ let randomOrder = shuffle(choiceArray);
 console.log(`The random order is: ${randomOrder}`);
 
 //creates an array of possible URLs for the user to visit
-function turnIntoURL(questionObj) {
+let turnIntoURL = (questionObj) => {
   return [
-    `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.correct}`,
-    `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong1}`,
-    `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong2}`,
-    `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong3}`,
+    `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.correct}">${questionObj.correct}</a>`,
+    `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong1}">${questionObj.wrong1}</a>`,
+    `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong2}">${questionObj.wrong2}</a>`,
+    `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong3}">${questionObj.wrong3}</a>`,
   ];
 }
 
 //structures the URLs, in a random order
-function askQuestion(questionObj) {
+let askQuestion = (questionObj) => {
   // console.log(`questionObj is: ${questionObj}`)
   URLs = turnIntoURL(questionObj);
   return (
@@ -60,7 +60,7 @@ function askQuestion(questionObj) {
 }
 
 //determines whether the answer query is a correct answer or a wrong answer
-function gradeAnswer (questionObj, answer) {
+let gradeAnswer = (questionObj, answer) => {
  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
 
 if (answer === qArray[gameState.questionNum].correct) {
@@ -77,7 +77,7 @@ if (answer === qArray[gameState.questionNum].correct) {
     return youAreWrong + askQuestion(qArray[gameState.questionNum]);
   }  
 else {
-    return "Invalid input! Go back and try again! Or go back to the beginning to start over: <br> http://localhost:3000/start";
+    return "Invalid input! Go back and try again! Or go back to the beginning to start over: <br> <a href = 'http://localhost:3000/start'>Start Over</a>";
   }
 }
 
