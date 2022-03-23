@@ -1,8 +1,20 @@
-const { historyQ } = require("../questions/questions-hist");
-const { questions } = require("../questions/questions-all");
+const { questions } = require("./questions");
 
-const { gameState, youAreRight, youAreWrong } = require("./variables");
-const res = require("express/lib/response");
+const gameState = {
+  name: "",
+  score: 0,
+  questionNum: 0,
+  
+};
+
+const youAreWrong = "Wrong answer! <br>";
+const youAreRight = "Correct answer! <br>";
+
+const howToAnswer =
+  "To select your answer, visit one of the following URLs: <br>";
+
+
+
 
 // shuffles an array
 function shuffle(array) {
@@ -59,19 +71,19 @@ function askQuestion(questionObj) {
 
 function gradeAnswer (questionObj, answer) {
  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
- 
-if (answer === questions[gameState.questionNumber].correct) {
+
+if (answer === questions[gameState.questionNum].correct) {
     gameState.score = gameState.score + 1;
-    gameState.questionNumber = gameState.questionNumber +1;
-    console.log(`score is ${gameState.score}, question # is: ${gameState.questionNumber}`)
-    return youAreRight + askQuestion(questions[gameState.questionNumber]);
+    gameState.questionNum = gameState.questionNum +1;
+    console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
+    return youAreRight + askQuestion(questions[gameState.questionNum]);
   } else if (
-    answer === questions[gameState.questionNumber].wrong1 ||
-    answer === questions[gameState.questionNumber].wrong2 ||
-    answer === questions[gameState.questionNumber].wrong3  
+    answer === questions[gameState.questionNum].wrong1 ||
+    answer === questions[gameState.questionNum].wrong2 ||
+    answer === questions[gameState.questionNum].wrong3  
     ) {
-    gameState.questionNumber = gameState.questionNumber +1;
-    return youAreWrong + askQuestion(questions[gameState.questionNumber]);
+    gameState.questionNum = gameState.questionNum +1;
+    return youAreWrong + askQuestion(questions[gameState.questionNum]);
   }  
 else {
     return "Invalid input! Go back and try again!";
@@ -85,17 +97,17 @@ else {
 
 //   if (question == 20) {
 //     return "You are done the quiz! To see your score go to http://localhost:3000/score";
-//   } else if (answer === questions[gameState.questionNumber].correct) {
+//   } else if (answer === questions[gameState.questionNum].correct) {
 //     gameState.score = gameState.score + 1;
-//     gameState.questionNumber = gameState.questionNumber +1;
-//     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNumber}`)
-//     return youAreRight + askQuestion(questions[gameState.questionNumber]);
+//     gameState.questionNum = gameState.questionNum +1;
+//     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
+//     return youAreRight + askQuestion(questions[gameState.questionNum]);
 //   } else if (
-//     answer === questions[gameState.questionNumber].wrong1 ||
-//     answer === questions[gameState.questionNumber].wrong2 ||
-//     answer === questions[gameState.questionNumber].wrong3  ) {
-//     gameState.questionNumber = gameState.questionNumber +1;
-//     return youAreWrong + askQuestion(questions[gameState.questionNumber]);
+//     answer === questions[gameState.questionNum].wrong1 ||
+//     answer === questions[gameState.questionNum].wrong2 ||
+//     answer === questions[gameState.questionNum].wrong3  ) {
+//     gameState.questionNum = gameState.questionNum +1;
+//     return youAreWrong + askQuestion(questions[gameState.questionNum]);
 //   }  
 // else {
 //     return "Invalid input! Go back and try again!";
@@ -109,6 +121,9 @@ else {
 
 
 module.exports = {
+  youAreRight,
+  youAreWrong,
+  gameState,
   turnIntoURL,
   askQuestion,
   shuffle,

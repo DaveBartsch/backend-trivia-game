@@ -2,26 +2,23 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const { historyQ } = require("./questions/questions-hist");
-const { geographyQuestions } = require("./questions/questions-geo");
-const { biologyQuestions } = require("./questions/questions-bio");
-const { questions } = require("./questions/questions-all");
+
+const { questions } = require("./questions");
 // const { physicsQuestions } = require("./questions-phys");
 
 const {
+  gameState,
+  youAreRight,
+  youAreWrong,
   askQuestion,
   turnIntoURL,
   shuffle,
   choicesArr,
   randomOrder,
   gradeAnswer,
-} = require("./triviaLogic/functions");
+} = require("./functions");
 
-const {
-  gameState,
-  youAreRight,
-  youAreWrong,
-} = require("./triviaLogic/variables");
+
 
 app.get("/", (req, res) => {
   res.send(
@@ -31,14 +28,14 @@ app.get("/", (req, res) => {
 
 
 app.get("/start", (req, res) => {
-  let askQ = askQuestion(questions[gameState.questionNumber])
-  gameState.questionNumber = 0;
+  gameState.questionNum = 0;
   gameState.score = 0;
-  questionObj = questions[gameState.questionNumber]
+  let askQ = askQuestion(questions[gameState.questionNum])
+  questionObj = questions[gameState.questionNum]
 
   res.send(askQ);
   console.log("Resetting score to 0...") 
-  console.log(`gameState.questionNumber is: ${gameState.questionNumber}`);
+  console.log(`gameState.questionNum is: ${gameState.questionNum}`);
 });
 
 
@@ -46,7 +43,7 @@ app.get("/start", (req, res) => {
 app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
-  let grade = gradeAnswer(historyQ[0], answer);
+  let grade = gradeAnswer(questions[gameState.questionNum], answer);
 
   if (question == "20") {
     res.send("You are done the quiz! To see your score go to http://localhost:3000/score")
