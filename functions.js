@@ -10,11 +10,6 @@ const gameState = {
 const youAreWrong = "Wrong answer! <br>";
 const youAreRight = "Correct answer! <br>";
 
-const howToAnswer =
-  "To select your answer, visit one of the following URLs: <br>";
-
-
-
 
 // shuffles an array
 function shuffle(array) {
