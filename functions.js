@@ -77,7 +77,7 @@ if (answer === qArray[gameState.questionNum].correct) {
     return youAreWrong + askQuestion(qArray[gameState.questionNum]);
   }  
 else {
-    return "Invalid input! Go back and try again!";
+    return "Invalid input! Go back and try again! Or go back to the beginning to start over: <br> http://localhost:3000/start";
   }
 }
 

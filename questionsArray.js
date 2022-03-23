@@ -200,13 +200,13 @@ const qArray = [
   },
 
   {
-    q: "Not a real question. User should not see this message",
+    q: "Not a real question. User should not see this message!",
     wrong1: "",
     wrong2: "",
     wrong3: "",
     correct: "",
     qNum: 21,
-    category: "physics"
+    category: ""
   },
 
 ];
