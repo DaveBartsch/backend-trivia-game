@@ -1,4 +1,5 @@
-const { questions } = require("./questions");
+const { qArray } = require("./questionsArray");
+
 
 const gameState = {
   name: "",
@@ -9,7 +10,6 @@ const gameState = {
 
 const youAreWrong = "Wrong answer! <br>";
 const youAreRight = "Correct answer! <br>";
-
 
 // shuffles an array
 function shuffle(array) {
@@ -32,15 +32,12 @@ function shuffle(array) {
 }
 
 //randomized choices from 0-3
-let choicesArr = [0, 1, 2, 3];
-let randomOrder = shuffle(choicesArr);
+let choiceArray = [0, 1, 2, 3];
+let randomOrder = shuffle(choiceArray);
 console.log(`The random order is: ${randomOrder}`);
 
-
-// let questionObj = 0;
 //creates an array of possible URLs for the user to visit
 function turnIntoURL(questionObj) {
-  console.log(`questionObj is: ${questionObj}`)
   return [
     `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.correct}`,
     `http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong1}`,
@@ -49,7 +46,7 @@ function turnIntoURL(questionObj) {
   ];
 }
 
-//structures the URLs for res.sending
+//structures the URLs, in a random order
 function askQuestion(questionObj) {
   // console.log(`questionObj is: ${questionObj}`)
   URLs = turnIntoURL(questionObj);
@@ -62,57 +59,27 @@ function askQuestion(questionObj) {
   );
 }
 
-
-
+//determines whether the answer query is a correct answer or a wrong answer
 function gradeAnswer (questionObj, answer) {
  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
 
-if (answer === questions[gameState.questionNum].correct) {
+if (answer === qArray[gameState.questionNum].correct) {
     gameState.score = gameState.score + 1;
     gameState.questionNum = gameState.questionNum +1;
     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
-    return youAreRight + askQuestion(questions[gameState.questionNum]);
+    return youAreRight + askQuestion(qArray[gameState.questionNum]);
   } else if (
-    answer === questions[gameState.questionNum].wrong1 ||
-    answer === questions[gameState.questionNum].wrong2 ||
-    answer === questions[gameState.questionNum].wrong3  
+    answer === qArray[gameState.questionNum].wrong1 ||
+    answer === qArray[gameState.questionNum].wrong2 ||
+    answer === qArray[gameState.questionNum].wrong3  
     ) {
     gameState.questionNum = gameState.questionNum +1;
-    return youAreWrong + askQuestion(questions[gameState.questionNum]);
+    return youAreWrong + askQuestion(qArray[gameState.questionNum]);
   }  
 else {
     return "Invalid input! Go back and try again!";
   }
 }
-
-
-// function gradeAnswer (questionObj, answer) {
-//   console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
-// let question = 0;
-
-//   if (question == 20) {
-//     return "You are done the quiz! To see your score go to http://localhost:3000/score";
-//   } else if (answer === questions[gameState.questionNum].correct) {
-//     gameState.score = gameState.score + 1;
-//     gameState.questionNum = gameState.questionNum +1;
-//     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
-//     return youAreRight + askQuestion(questions[gameState.questionNum]);
-//   } else if (
-//     answer === questions[gameState.questionNum].wrong1 ||
-//     answer === questions[gameState.questionNum].wrong2 ||
-//     answer === questions[gameState.questionNum].wrong3  ) {
-//     gameState.questionNum = gameState.questionNum +1;
-//     return youAreWrong + askQuestion(questions[gameState.questionNum]);
-//   }  
-// else {
-//     return "Invalid input! Go back and try again!";
-//   }
-// }
-
-
-
-
-
 
 
 module.exports = {
@@ -122,7 +89,7 @@ module.exports = {
   turnIntoURL,
   askQuestion,
   shuffle,
-  choicesArr,
+  choiceArray,
   randomOrder,
   gradeAnswer,
 };

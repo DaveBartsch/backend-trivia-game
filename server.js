@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const { questions } = require("./questions");
+const { qArray } = require("./questionsArray");
 const {
   gameState,
   youAreRight,
@@ -10,7 +10,7 @@ const {
   askQuestion,
   turnIntoURL,
   shuffle,
-  choicesArr,
+  choiceArray,
   randomOrder,
   gradeAnswer,
 } = require("./functions");
@@ -26,8 +26,8 @@ app.get("/", (req, res) => {
 app.get("/start", (req, res) => {
   gameState.questionNum = 0;
   gameState.score = 0;
-  let askQ = askQuestion(questions[gameState.questionNum])
-  questionObj = questions[gameState.questionNum]
+  let askQ = askQuestion(qArray[gameState.questionNum])
+  questionObj = qArray[gameState.questionNum]
 
   res.send(askQ);
   console.log("Resetting score to 0...") 
@@ -38,7 +38,7 @@ app.get("/start", (req, res) => {
 app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
-  let grade = gradeAnswer(questions[gameState.questionNum], answer);
+  let grade = gradeAnswer(qArray[gameState.questionNum], answer);
 
   if (question == "20") {
     res.send("You are done the quiz! To see your score go to http://localhost:3000/score")

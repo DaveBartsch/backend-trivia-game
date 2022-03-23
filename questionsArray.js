@@ -1,4 +1,4 @@
-const questions = [
+const qArray = [
   {
     q: "History question 1: Where did the Olympics originate?",
     wrong1: `turkey`,
@@ -10,7 +10,7 @@ const questions = [
   },
 
   {
-    q: "History question 2: Fill in the blank: The most famous pyramids are known as The Great Pyramids of ____",
+    q: "History question 2: The most famous pyramids are known as The Great Pyramids of _____",
     wrong1: "egypt",
     wrong2: "alexandria",
     wrong3: "cairo",
@@ -212,5 +212,5 @@ const questions = [
 ];
 
 module.exports = {
-  questions,
+  qArray,
 };
