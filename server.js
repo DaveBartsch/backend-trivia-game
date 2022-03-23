@@ -40,9 +40,14 @@ app.get("/trivia", (req, res) => {
   let question = req.query.question;
   let grade = gradeAnswer(qArray[gameState.questionNum], answer);
 
-  if (question == "20") {
-    res.send("You are done the quiz! To see your score go to http://localhost:3000/score")
-  } else {
+  if (answer === qArray[19].correct) {
+    res.send(youAreRight + "You are done the quiz! To see your score go to <br> http://localhost:3000/score")
+  } else if (answer === qArray[19].wrong1 || answer === qArray[19].wrong2 || answer === qArray[19].wrong
+  ){
+    res.send(youAreWrong + "You are done the quiz! To see your score go to <br> http://localhost:3000/score")
+  } 
+  
+  else {
   res.send(grade);
   }
 });
