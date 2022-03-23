@@ -160,7 +160,7 @@ const questions = [
   },
 
   {
-    q: "Physics question 3: When you add all colours together, what is the result?",
+    q: "Physics question 2: When you add all colours together, what is the result?",
     wrong1: "black",
     wrong2: "grey",
     wrong3: "brown",
@@ -190,7 +190,7 @@ const questions = [
   },
 
   {
-    q: "Physics question 3: What unit of measurement is used for forces of nature? <br><br>",
+    q: "Physics question 5: What unit of measurement is used for forces of nature? <br><br>",
     wrong1: "grams",
     wrong2: "watts",
     wrong3: "joules",
@@ -198,6 +198,7 @@ const questions = [
     qNum: 20,
     category: "physics"
   },
+
 ];
 
 module.exports = {

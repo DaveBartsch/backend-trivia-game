@@ -37,7 +37,8 @@ app.get("/start", (req, res) => {
   questionObj = questions[gameState.questionNumber]
 
   res.send(askQ);
-  console.log("Resetting score to 0... gameState.questionNumber is: ", gameState.questionNumber);
+  console.log("Resetting score to 0...") 
+  console.log(`gameState.questionNumber is: ${gameState.questionNumber}`);
 });
 
 
@@ -46,7 +47,12 @@ app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
   let grade = gradeAnswer(historyQ[0], answer);
+
+  if (question == "20") {
+    res.send("You are done the quiz! To see your score go to http://localhost:3000/score")
+  } else {
   res.send(grade);
+  }
 });
 
 //score page

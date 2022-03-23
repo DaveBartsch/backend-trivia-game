@@ -2,6 +2,7 @@ const { historyQ } = require("../questions/questions-hist");
 const { questions } = require("../questions/questions-all");
 
 const { gameState, youAreRight, youAreWrong } = require("./variables");
+const res = require("express/lib/response");
 
 // shuffles an array
 function shuffle(array) {
@@ -57,26 +58,55 @@ function askQuestion(questionObj) {
 
 
 function gradeAnswer (questionObj, answer) {
-  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
-
-  if (answer === questions[gameState.questionNumber].correct) {
+ console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
+ 
+if (answer === questions[gameState.questionNumber].correct) {
     gameState.score = gameState.score + 1;
     gameState.questionNumber = gameState.questionNumber +1;
-    console.log(gameState.score)
+    console.log(`score is ${gameState.score}, question # is: ${gameState.questionNumber}`)
     return youAreRight + askQuestion(questions[gameState.questionNumber]);
   } else if (
     answer === questions[gameState.questionNumber].wrong1 ||
     answer === questions[gameState.questionNumber].wrong2 ||
-    answer === questions[gameState.questionNumber].wrong3
-  ) {
+    answer === questions[gameState.questionNumber].wrong3  
+    ) {
     gameState.questionNumber = gameState.questionNumber +1;
     return youAreWrong + askQuestion(questions[gameState.questionNumber]);
-  } 
-  
-  else {
+  }  
+else {
     return "Invalid input! Go back and try again!";
   }
 }
+
+
+// function gradeAnswer (questionObj, answer) {
+//   console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
+// let question = 0;
+
+//   if (question == 20) {
+//     return "You are done the quiz! To see your score go to http://localhost:3000/score";
+//   } else if (answer === questions[gameState.questionNumber].correct) {
+//     gameState.score = gameState.score + 1;
+//     gameState.questionNumber = gameState.questionNumber +1;
+//     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNumber}`)
+//     return youAreRight + askQuestion(questions[gameState.questionNumber]);
+//   } else if (
+//     answer === questions[gameState.questionNumber].wrong1 ||
+//     answer === questions[gameState.questionNumber].wrong2 ||
+//     answer === questions[gameState.questionNumber].wrong3  ) {
+//     gameState.questionNumber = gameState.questionNumber +1;
+//     return youAreWrong + askQuestion(questions[gameState.questionNumber]);
+//   }  
+// else {
+//     return "Invalid input! Go back and try again!";
+//   }
+// }
+
+
+
+
+
+
 
 module.exports = {
   turnIntoURL,
