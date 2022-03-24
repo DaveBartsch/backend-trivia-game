@@ -10,7 +10,7 @@ const qArray = [
   },
 
   {
-    q: "History question 2: The most famous pyramids are known as The Great Pyramids of _____",
+    q: "History question 2: The most famous pyramids are known as: The Great Pyramids of _____",
     wrong1: "egypt",
     wrong2: "alexandria",
     wrong3: "cairo",
