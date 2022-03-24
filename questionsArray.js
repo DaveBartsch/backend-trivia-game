@@ -1,3 +1,4 @@
+//An array of objects. Each object contains one trivia question
 const qArray = [
   {
     q: "History question 1: Where did the Olympics originate?",

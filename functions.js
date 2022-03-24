@@ -12,7 +12,7 @@ const youAreWrong = "Wrong answer! <br>";
 const youAreRight = "Correct answer! <br>";
 
 // shuffles an array
-let shuffle = (array) => {
+const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
 
@@ -32,12 +32,12 @@ let shuffle = (array) => {
 }
 
 //randomized choices from 0-3
-let choiceArray = [0, 1, 2, 3];
+const choiceArray = [0, 1, 2, 3];
 let randomOrder = shuffle(choiceArray);
-console.log(`The random order is: ${randomOrder}`);
+// console.log(`The random order is: ${randomOrder}`);
 
 //creates an array of possible URLs for the user to visit
-let turnIntoURL = (questionObj) => {
+const turnIntoURL = (questionObj) => {
   return [
     `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.correct}">${questionObj.correct}</a>`,
     `<a href ="http://localhost:3000/trivia?category=${questionObj.category}&question=${questionObj.qNum}&answer=${questionObj.wrong1}">${questionObj.wrong1}</a>`,
@@ -47,7 +47,7 @@ let turnIntoURL = (questionObj) => {
 }
 
 //structures the URLs, in a random order
-let askQuestion = (questionObj) => {
+const askQuestion = (questionObj) => {
   // console.log(`questionObj is: ${questionObj}`)
   URLs = turnIntoURL(questionObj);
   return (
@@ -60,12 +60,14 @@ let askQuestion = (questionObj) => {
 }
 
 //determines whether the answer query is a correct answer or a wrong answer
-let gradeAnswer = (questionObj, answer) => {
- console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
+const gradeAnswer = (questionObj, answer) => {
+//  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
+ randomOrder = shuffle(choiceArray);
 
 if (answer === qArray[gameState.questionNum].correct) {
+  gameState.questionNum = gameState.questionNum +1;
     gameState.score = gameState.score + 1;
-    gameState.questionNum = gameState.questionNum +1;
+    // console.log(`The random order is: ${randomOrder}`);
     console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
     return youAreRight + askQuestion(qArray[gameState.questionNum]);
   } else if (
@@ -73,10 +75,13 @@ if (answer === qArray[gameState.questionNum].correct) {
     answer === qArray[gameState.questionNum].wrong2 ||
     answer === qArray[gameState.questionNum].wrong3  
     ) {
-    gameState.questionNum = gameState.questionNum +1;
-    return youAreWrong + askQuestion(qArray[gameState.questionNum]);
+      gameState.questionNum = gameState.questionNum +1;
+      // console.log(`The random order is: ${randomOrder}`);
+      console.log(`score is ${gameState.score}, question # is: ${gameState.questionNum}`)
+      return youAreWrong + askQuestion(qArray[gameState.questionNum]);
   }  
 else {
+  console.log(`User has an Error! The question # was (${gameState.questionNum}). The score was (${gameState.score})`)
     return "Invalid input! Go back and try again! Or go back to the beginning to start over: <br> <a href = 'http://localhost:3000/start'>Start Over</a>";
   }
 }
