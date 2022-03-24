@@ -9,3 +9,4 @@ INSTRUCTIONS:
 - Start the server by typing into the Command Line: node server.js
 - In a browser, visit http://localhost:3000/
 - Follow the instructions in the browser
+- Don'f refresh the page!
