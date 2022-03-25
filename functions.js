@@ -15,6 +15,7 @@ const shuffle = (array) => {
 
   // While there remain elements to shuffle...
   while (currentIndex != 0) {
+    
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -56,7 +57,7 @@ const askQuestion = (questionObj) => {
   );
 };
 
-//determines whether the answer query is a correct answer or a wrong answer
+//determines whether the answer query is a correct choice or a wrong choice
 const gradeAnswer = (questionObj, answer) => {
   //  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
   randomOrder = shuffle(choiceArray);
