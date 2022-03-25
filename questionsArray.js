@@ -161,7 +161,7 @@ const qArray = [
   },
 
   {
-    q: "Physics question 2: When you add all colours together, what is the result?",
+    q: "Physics question 2: When you add all colours of light together, what is the result?",
     wrong1: "black",
     wrong2: "grey",
     wrong3: "brown",
