@@ -48,16 +48,11 @@ const askQuestion = (questionObj) => {
   // console.log(`questionObj is: ${questionObj}`)
   URLs = turnIntoURL(questionObj);
   return (
-    questionObj.q +
-    "<br><br>" +
-    URLs[randomOrder[0]] +
-    "<br>" +
-    URLs[randomOrder[1]] +
-    "<br>" +
-    URLs[randomOrder[2]] +
-    "<br>" +
-    URLs[randomOrder[3]] +
-    "<br>"
+    questionObj.q + "<br><br>" +
+    URLs[randomOrder[0]] + "<br>" +
+    URLs[randomOrder[1]] + "<br>" +
+    URLs[randomOrder[2]] + "<br>" +
+    URLs[randomOrder[3]] + "<br>"
   );
 };
 
