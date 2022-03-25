@@ -34,7 +34,7 @@ app.get("/start", (req, res) => {
   console.log(`gameState.questionNum is: ${gameState.questionNum}`);
 });
 
-//when answer 1 is recieved as a query, ask question 2, repeat for question 2, etc
+//when answer 1 is recieved as a query, ask question 2, repeat for question 2, etc, game over when question 20 is receieved
 app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
