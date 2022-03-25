@@ -71,6 +71,7 @@ const gradeAnswer = (questionObj, answer) => {
       `score is ${gameState.score}, question # is: ${gameState.questionNum}`
     );
     return youAreRight + askQuestion(qArray[gameState.questionNum]);
+
     //if answer is a wrong choice for the current question, add 1 to the question number
   } else if (
     answer === qArray[gameState.questionNum].wrong1 ||
@@ -83,6 +84,7 @@ const gradeAnswer = (questionObj, answer) => {
       `score is ${gameState.score}, question # is: ${gameState.questionNum}`
     );
     return youAreWrong + askQuestion(qArray[gameState.questionNum]);
+
     //if anything else, display an error message, redirect user to Start page
   } else {
     console.log(
