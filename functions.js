@@ -8,14 +8,13 @@ const gameState = {
 const youAreWrong = "Wrong answer! <br>";
 const youAreRight = "Correct answer! <br>";
 
-// shuffles an array
+// shuffles an array. From https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;
 
   // While there remain elements to shuffle...
   while (currentIndex != 0) {
-    
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -53,8 +52,7 @@ const askQuestion = (questionObj) => {
     URLs[randomOrder[0]] + "<br>" +
     URLs[randomOrder[1]] + "<br>" +
     URLs[randomOrder[2]] + "<br>" +
-    URLs[randomOrder[3]] + "<br>"
-  );
+    URLs[randomOrder[3]] + "<br>" );
 };
 
 //determines whether the answer query is a correct choice or a wrong choice
@@ -62,8 +60,10 @@ const gradeAnswer = (questionObj, answer) => {
   //  console.log(`questionObj is: ${JSON.stringify(questionObj)}`)
   randomOrder = shuffle(choiceArray);
 
-  //if answer is correct choice for the current question, add 1 to score, add 1 to question number
+  //if answer is correct choice for the current question...
   if (answer === qArray[gameState.questionNum].correct) {
+
+    //add 1 to score & add 1 to question number
     gameState.questionNum = gameState.questionNum + 1;
     gameState.score = gameState.score + 1;
     // console.log(`The random order is: ${randomOrder}`);
@@ -72,12 +72,13 @@ const gradeAnswer = (questionObj, answer) => {
     );
     return youAreRight + askQuestion(qArray[gameState.questionNum]);
 
-    //if answer is a wrong choice for the current question, add 1 to the question number
+    //if answer is a wrong choice for the current question...
   } else if (
     answer === qArray[gameState.questionNum].wrong1 ||
     answer === qArray[gameState.questionNum].wrong2 ||
     answer === qArray[gameState.questionNum].wrong3
-  ) {
+  ) { 
+    // add 1 to the question number
     gameState.questionNum = gameState.questionNum + 1;
     // console.log(`The random order is: ${randomOrder}`);
     console.log(
