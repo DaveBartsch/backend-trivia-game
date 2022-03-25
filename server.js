@@ -39,6 +39,7 @@ app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
   let grade = gradeAnswer(qArray[gameState.questionNum], answer);
+  
   //if answer is the correct choice for question 20, display end of game message, redirect the user to score page
   if (answer === qArray[19].correct) {
     console.log("Last question recieved! Directing user to score page.");
