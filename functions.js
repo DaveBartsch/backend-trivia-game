@@ -2,7 +2,6 @@ const { qArray } = require("./questionsArray");
 
 
 const gameState = {
-  name: "",
   score: 0,
   questionNum: 0,
   

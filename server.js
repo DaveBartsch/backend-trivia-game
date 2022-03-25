@@ -18,7 +18,7 @@ const {
 // Welcome page
 app.get("/", (req, res) => {
   res.send(
-    "<h3>Welcome to Trivia World! </h3>There are four categories: history, geography, biology, and physics. The first category is history!<br> To start the game, go to <br> http://localhost:3000/start"
+    "<h3>Welcome to Trivia World! </h3>There are four categories: history, geography, biology, and physics. Each category has five questions that get progressively harder. The first category is history!<br> To start the game, go to <br> http://localhost:3000/start"
   );
 });
 
