@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   );
 });
 
-//Start page, resets the score and questionNum to 0
+//Start page, resets the score and questionNum to 0, asks question number 1
 app.get("/start", (req, res) => {
   gameState.questionNum = 0;
   gameState.score = 0;
@@ -39,7 +39,7 @@ app.get("/trivia", (req, res) => {
   let answer = req.query.answer;
   let question = req.query.question;
   let grade = gradeAnswer(qArray[gameState.questionNum], answer);
-  
+
   //if answer is the correct choice for question 20, display end of game message, redirect the user to score page
   if (answer === qArray[19].correct) {
     console.log("Last question recieved! Directing user to score page.");
@@ -51,7 +51,7 @@ app.get("/trivia", (req, res) => {
   } else if (
     answer === qArray[19].wrong1 ||
     answer === qArray[19].wrong2 ||
-    answer === qArray[19].wrong
+    answer === qArray[19].wrong3
   ) {
     console.log("Last question recieved! Directing user to score page.");
     res.send(
