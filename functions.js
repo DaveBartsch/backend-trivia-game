@@ -64,7 +64,7 @@ const gradeAnswer = (questionObj, answer) => {
   //if answer is correct choice for the current question...
   if (answer === questionObj.correct) {
 
-    //add 1 to score & add 1 to question number
+    //add 1 to score & add 1 to question number, ask next question
     gameState.questionNum = gameState.questionNum + 1;
     gameState.score = gameState.score + 1;
     // console.log(`The random order is: ${randomOrder}`);
@@ -79,7 +79,7 @@ const gradeAnswer = (questionObj, answer) => {
     answer === questionObj.wrong2 ||
     answer === questionObj.wrong3
   ) { 
-    // add 1 to the question number
+    // add 1 to the question number, ask next question
     gameState.questionNum = gameState.questionNum + 1;
     // console.log(`The random order is: ${randomOrder}`);
     console.log(
