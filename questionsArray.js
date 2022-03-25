@@ -201,7 +201,7 @@ const qArray = [
   },
 
   {
-    q: "Not a real question. User should not see this message!",
+    q: " ",
     wrong1: "",
     wrong2: "",
     wrong3: "",
