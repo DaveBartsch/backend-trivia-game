@@ -15,7 +15,7 @@ const shuffle = (array) => {
 
   // While there remain elements to shuffle...
   while (currentIndex != 0) {
-    
+
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -62,7 +62,7 @@ const gradeAnswer = (questionObj, answer) => {
   randomOrder = shuffle(choiceArray);
 
   //if answer is correct choice for the current question...
-  if (answer === qArray[gameState.questionNum].correct) {
+  if (answer === questionObj.correct) {
 
     //add 1 to score & add 1 to question number
     gameState.questionNum = gameState.questionNum + 1;
@@ -75,9 +75,9 @@ const gradeAnswer = (questionObj, answer) => {
 
     //if answer is a wrong choice for the current question...
   } else if (
-    answer === qArray[gameState.questionNum].wrong1 ||
-    answer === qArray[gameState.questionNum].wrong2 ||
-    answer === qArray[gameState.questionNum].wrong3
+    answer === questionObj.wrong1 ||
+    answer === questionObj.wrong2 ||
+    answer === questionObj.wrong3
   ) { 
     // add 1 to the question number
     gameState.questionNum = gameState.questionNum + 1;
