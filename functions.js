@@ -38,10 +38,10 @@ let randomOrder = shuffle(choiceArray);
 //creates an array of possible URLs for the user to visit
 const turnIntoURL = (questionObj) => {
   return [
-    `<a href ="http://localhost:3000/trivia?category=question=${questionObj.qNum}&answer=${questionObj.correct}">${questionObj.correct}</a>`,
-    `<a href ="http://localhost:3000/trivia?category=question=${questionObj.qNum}&answer=${questionObj.wrong1}">${questionObj.wrong1}</a>`,
-    `<a href ="http://localhost:3000/trivia?category=question=${questionObj.qNum}&answer=${questionObj.wrong2}">${questionObj.wrong2}</a>`,
-    `<a href ="http://localhost:3000/trivia?category=question=${questionObj.qNum}&answer=${questionObj.wrong3}">${questionObj.wrong3}</a>`,
+    `<a href ="http://localhost:3000/trivia?answer=${questionObj.correct}">${questionObj.correct}</a>`,
+    `<a href ="http://localhost:3000/trivia?answer=${questionObj.wrong1}">${questionObj.wrong1}</a>`,
+    `<a href ="http://localhost:3000/trivia?answer=${questionObj.wrong2}">${questionObj.wrong2}</a>`,
+    `<a href ="http://localhost:3000/trivia?answer=${questionObj.wrong3}">${questionObj.wrong3}</a>`,
   ];
 }
 
